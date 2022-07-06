@@ -1,6 +1,6 @@
 from json import *
 
-with open("countries.json",encoding="utf-8") as f:
+with open("countries.json","r",encoding="utf-8") as f:
     data=(load(f))
 print(data[0])
 
@@ -26,5 +26,12 @@ print(ukraine_currency_data.pop().pop().get("name"))
 #print highest populated country
 
 india_languages=[country["languages"] for country in data if country["name"].lower()=="india"]
-print(india_languages)
+print(india_languages.pop().pop())
 
+borders_ukraine=[country["borders"] for country in data if country["name"].lower()=="ukraine"]
+print(borders_ukraine.pop())
+
+#print(max(data,key=lambda post:len(post["liked_by"])))
+population=max(data,key=lambda data:data["population"])
+print(population.get("name"))
+print(population.get("population"))
